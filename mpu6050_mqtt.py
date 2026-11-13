@@ -5,8 +5,11 @@
 
 Claude가 작성해줌. 추후 코듣 분석 필요.
 """
+
+# 매번 버츄얼 환경을 읽어오는 게 귀찮아서, 로컬 라이브러리를 읽어오도록 하는 local_library.py를 import 함.
 import local_library
 
+# argpare는 파일 뒤에 arguments를 붙여서 실행할 때, 그 arguments를 읽어오는 모듈임
 import argparse
 import json
 import signal
@@ -28,8 +31,10 @@ def make_client(client_id):
 
 def parse_args():
     """명령줄 옵션을 읽는다. 코드를 고치지 않고 브로커 주소 등을 바꿀 수 있다."""
+    # 프로그램 실행 후에 argument를 읽어오는 방식도 있지만, 쉘에서 실행할 때에는 argument를 붙이는 편이 더 편할 것 같다.
     p = argparse.ArgumentParser(description="MPU 센서 값을 MQTT 로 publish")
-    p.add_argument("--host", default="localhost", help="브로커 주소")
+    # 
+    p.add_argument("--host", default="ptjoker95MacPro.local", help="브로커 주소")
     p.add_argument("--port", type=int, default=1883)
     p.add_argument("--topic", default="sensors/mpu/data", help="데이터 토픽")
     p.add_argument("--client-id", default="mpu-rpi")   # 브로커가 클라이언트를 구분하는 이름
