@@ -137,7 +137,7 @@ set_dlpf_bandwidth( 0 )
 
 print( f'gyro_offset_x: {gyro_offset_x:.2f}, gyro_offset_y: {gyro_offset_y:.2f}, gyro_offset_z: {gyro_offset_z:.2f}' )
 
-for i in range( 50 ):
+for i in range( 100 ):
     ( ax, ay, az ), temp_c, ( gx, gy, gz) = read_raw_data()
 
     # print( f'[{i+1}]회차] Gx: {gx:.2f}, Gy: {gy:.2f}, Gz: {gz:.2f}' )
@@ -146,9 +146,8 @@ for i in range( 50 ):
     gy = gy - gyro_offset_y
     gz = gz - gyro_offset_z
 
-    # print( f'[{i+1}]회차] Accel X: {ax:.2f} | Accel Y: {ay:.2f} | Accel Z: {az:.2f}' )
-    # print( f'[{i+1}]회차] temperature : {temp_c:.2f}' )
-    print( f'[{i+1}]회차] Gx: {gx:.2f}, Gy: {gy:.2f}, Gz: {gz:.2f}' )
+    print( f'[{i+1}]회차: Accel X, {ax:.2f}, Accel Y, {ay:.2f}, Accel Z, {az:.2f}, temperature, {temp_c:.2f}, Gx, {gx:.2f}, Gy, {gy:.2f}, Gz, {gz:.2f}' )
+    time.sleep( 0.05 )
 
 '''
 set_dlpf_bandwidth( 6 )
